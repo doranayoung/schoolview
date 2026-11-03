@@ -1,0 +1,104 @@
+{
+  "id": "sample-badaro",
+  "name": "바다로고등학교",
+  "region": "부산 (예시)",
+  "type": "일반고",
+  "isSample": true,
+  "classesPerGrade": 6,
+  "intro": "인문·사회 선택과목과 토론 수업이 강하고, 해양 관련 특색 프로그램이 있는 학교예요.",
+  "highlights": ["토론·글쓰기 중심 수업", "해양 탐구 특색 프로그램", "소규모 학급 운영"],
+  "subjects": [
+    {
+      "name": "정보",
+      "category": "일반선택",
+      "grade": 1,
+      "credits": 4,
+      "teachingStyle": ["강의식", "실습"],
+      "assessment": ["지필", "실기"],
+      "room": "2층 컴퓨터실",
+      "tags": ["코딩", "정보", "컴퓨터"]
+    },
+    {
+      "name": "주제 탐구 독서",
+      "category": "진로선택",
+      "grade": 2,
+      "credits": 4,
+      "teachingStyle": ["토론", "프로젝트"],
+      "assessment": ["보고서", "발표"],
+      "room": "도서관 세미나실",
+      "seniorComment": "관심 분야 책을 골라서 탐구 보고서를 쓰는 수업이라 진로 정할 때 도움이 됐어요.",
+      "tags": ["교육", "인문", "글쓰기"]
+    },
+    {
+      "name": "사회문제 탐구",
+      "category": "융합선택",
+      "grade": 2,
+      "credits": 4,
+      "teachingStyle": ["토론", "프로젝트"],
+      "assessment": ["보고서", "토론"],
+      "room": "3층 사회교실",
+      "tags": ["사회", "교육", "정책"]
+    },
+    {
+      "name": "해양 문화와 기술",
+      "category": "융합선택",
+      "grade": 3,
+      "credits": 3,
+      "teachingStyle": ["프로젝트", "현장체험"],
+      "assessment": ["보고서", "발표"],
+      "room": "과학관 1층",
+      "seniorComment": "근처 해양 연구기관 견학이 있어요.",
+      "tags": ["해양", "공학", "과학"]
+    },
+    {
+      "name": "미적분Ⅰ",
+      "category": "일반선택",
+      "grade": 2,
+      "credits": 4,
+      "teachingStyle": ["강의식", "문제풀이"],
+      "assessment": ["지필", "서술형"],
+      "room": "3층 수학교실",
+      "tags": ["수학", "공학"]
+    }
+  ],
+  "clubs": [
+    {
+      "id": "badaro-debate",
+      "name": "말하는 바다",
+      "category": "학술",
+      "description": "사회 이슈를 주제로 찬반 토론을 하는 토론 동아리예요.",
+      "activities": ["주 1회 토론", "교내 토론대회 운영"],
+      "tags": ["사회", "교육", "인문"],
+      "recruit": { "start": "2026-11-03", "end": "2026-11-14", "interview": "11월 18일 방과후, 도서관 세미나실" },
+      "survey": ["최근 관심 있게 본 사회 이슈는?", "토론에서 맡고 싶은 역할은?"]
+    },
+    {
+      "id": "badaro-ocean",
+      "name": "해양로봇반",
+      "category": "학술",
+      "description": "수중 드론과 간단한 해양 탐사 로봇을 만드는 동아리예요.",
+      "activities": ["아두이노 기초", "수중 드론 제작", "해양 쓰레기 탐사 프로젝트"],
+      "tags": ["해양", "공학", "코딩", "AI"],
+      "recruit": { "start": "2026-12-01", "end": "2026-12-12", "notice": "1학년 우선 선발" },
+      "survey": ["만들어 보고 싶은 로봇은?", "아두이노나 코딩 경험이 있나요?"]
+    },
+    {
+      "id": "badaro-paper",
+      "name": "바다로 신문반",
+      "category": "언론",
+      "description": "학교 소식을 취재해서 교내 신문과 카드뉴스를 만들어요.",
+      "activities": ["교내 신문 발행", "카드뉴스 제작"],
+      "tags": ["인문", "글쓰기", "미디어"]
+    }
+  ],
+  "qna": [
+    {
+      "question": "학급 수가 적으면 선택과목이 적게 열리나요?",
+      "answer": "인기 없는 과목은 안 열릴 때도 있는데, 그럴 땐 공동교육과정이나 온라인 수업으로 들을 수 있게 안내해 줘요.",
+      "answeredBy": "3학년 재학생",
+      "reviewedBy": "담당 교사"
+    }
+  ],
+  "updatedAt": "2026-11-03",
+  "sources": ["예시 데이터 (실제 학교 정보 아님)"]
+}
