@@ -1,0 +1,53 @@
+# main에 올라오면 빌드해서 GitHub Pages에 배포한다.
+# 처음 한 번: 저장소 Settings → Pages → Build and deployment → Source를 "GitHub Actions"로 바꾼다.
+# 재학생 Q&A를 켜려면 Settings → Secrets and variables → Actions → Variables에
+# VITE_SUPABASE_URL, VITE_SUPABASE_PUBLISHABLE_KEY를 넣는다. (docs/supabase-setup.md)
+name: GitHub Pages 배포
+
+on:
+  push:
+    branches: [main]
+  pull_request: # 학교 데이터 PR 등은 빌드·린트만 확인하고 배포하지 않는다
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# PR은 새 커밋이 오면 이전 빌드를 취소하고, main 배포는 끝까지 마친다.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+        env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

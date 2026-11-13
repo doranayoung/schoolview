@@ -5,6 +5,8 @@
 고등학교의 **선택과목·동아리·학교생활** 정보를 학교마다 같은 틀로 정리해 보여주는 웹 서비스입니다.
 중학생은 고등학교 진학 전에 학교를 탐색하고, 고등학생은 입학 후 과목과 동아리를 고를 때 같은 정보를 활용합니다.
 
+**🔗 바로 써보기: https://doranayoung.github.io/schoolview/** (휴대폰에서 열고 "홈 화면에 추가"하면 앱처럼 쓸 수 있어요)
+
 > ⚠️ **현재 초안(1단계 MVP) 단계입니다.** 들어 있는 학교 정보는 화면 확인용 **가상 예시 데이터**이며 실제 학교와 관계없습니다.
 
 <p>
@@ -75,6 +77,13 @@ npm run dev
 | `npm run preview` | 빌드 결과 미리보기 |
 | `npm run lint` | 코드 검사 |
 
+## 배포
+
+`main` 브랜치에 올리면 GitHub Actions([deploy.yml](.github/workflows/deploy.yml))가 린트·빌드한 뒤 GitHub Pages에 배포합니다. Pull Request는 린트·빌드만 확인합니다.
+
+- 처음 한 번: 저장소 **Settings → Pages → Build and deployment → Source**를 **GitHub Actions**로 바꿉니다.
+- 재학생 Q&A를 켜려면: **Settings → Secrets and variables → Actions → Variables**에 `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`를 넣고 다시 배포합니다. ([설정 안내](docs/supabase-setup.md))
+
 ## 프로젝트 구조
 
 ```
@@ -90,6 +99,7 @@ schoolview/
 │  ├─ utils/           # 모집 상태·D-day, 신청서 링크, 학교 정보 검사·JSON 변환
 │  └─ types.ts         # 학교·과목·동아리 데이터 형식
 ├─ supabase/schema.sql # 재학생 Q&A DB 스키마와 권한(RLS)
+├─ .github/workflows/  # GitHub Pages 자동 배포
 ├─ public/             # 아이콘, 파비콘
 └─ docs/               # 입력 가이드, Supabase 설정 안내, README용 화면 캡처
 ```
@@ -142,7 +152,7 @@ schoolview/
 - [x] 교사·학생회용 학교 정보 입력 도우미와 [입력 가이드](docs/data-guide.md)
 - [ ] 모교 실제 데이터 입력 후 시범 운영 (2027년 3월 동아리 모집 시즌 목표)
 - [x] 재학생 Q&A 작성·검수 기능 (Supabase, [설정 안내](docs/supabase-setup.md))
-- [ ] 웹 배포 (GitHub Pages 또는 Vercel)
+- [x] 웹 배포 (GitHub Pages, main에 올리면 자동 배포)
 
 ## 만든 사람
 
