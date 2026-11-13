@@ -150,3 +150,14 @@ select { font: inherit; padding: 0.35rem 0.6rem; border-radius: 8px; border: 1px
 .ok-text { color: var(--green); font-weight: 600; }
 .json-preview { max-height: 360px; overflow: auto; font-size: 0.78rem; background: var(--bg); border-radius: 8px; padding: 0.75rem; white-space: pre-wrap; word-break: break-all; }
 .preview { border: 2px dashed var(--line); border-radius: 16px; padding: 1rem; display: grid; gap: 0.75rem; }
+
+/* 재학생 Q&A */
+.qna-cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem; }
+.qna-cta p { flex: 1 1 260px; }
+.qna-form { margin-top: 0; padding-top: 0; border-top: none; }
+.check-group .chip input[type='radio'] { position: absolute; opacity: 0; pointer-events: none; }
+.answer { border-top: 1px dashed var(--line); padding-top: 0.45rem; margin-top: 0.2rem; }
+.answer:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+.pre-line { white-space: pre-line; }
+.login { max-width: 420px; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1rem; }

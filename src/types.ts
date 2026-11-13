@@ -61,7 +61,8 @@ export interface School {
   highlights: string[]
   subjects: Subject[]
   clubs: Club[]
-  qna: QnA[]
+  qna: QnA[] // 검수를 마친 Q&A (파일로 관리)
+  qnaOpen?: boolean // 재학생 답변을 받는지. 검수자(학생회·교사)가 정해진 학교만 켠다
   updatedAt: string
   sources: string[] // 정보 출처 (학교알리미, 학교 제공 등)
 }

@@ -111,7 +111,7 @@ export default function SchoolEditor() {
       {tab === 'preview' && (
         <div className="preview">
           <p className="notice small">학생에게 보이는 화면이에요. 사전 설문의 신청서 링크도 실제로 동작하니 직접 확인해 보세요.</p>
-          <SchoolView school={output} />
+          <SchoolView school={output} preview />
         </div>
       )}
       {tab === 'export' && <ExportPanel output={output} issues={issues} />}
@@ -143,6 +143,11 @@ function BasicFields({ draft, update }: { draft: School; update: (patch: Partial
         label="예시(가상) 학교예요 — 실제 학교 정보가 아니면 체크"
         checked={Boolean(draft.isSample)}
         onChange={(isSample) => update({ isSample })}
+      />
+      <Checkbox
+        label="재학생 Q&A 답변을 받아요 — 답변을 검수할 학생회·담당 교사가 정해졌을 때만 체크"
+        checked={Boolean(draft.qnaOpen)}
+        onChange={(qnaOpen) => update({ qnaOpen })}
       />
     </div>
   )

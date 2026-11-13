@@ -21,6 +21,11 @@ const BANNED_WORDS = [
   { words: ['순위', '랭킹', '별점', '서열'], label: '학교 비교·순위 표현 (원칙 2)' },
 ]
 
+// 글 속에 개인 연락처로 보이는 내용이 있으면 그 종류를 돌려준다. (재학생 답변 작성에도 쓴다)
+export function findPersonalInfo(text: string): string[] {
+  return PERSONAL_INFO.filter(({ pattern }) => pattern.test(text)).map(({ label }) => label)
+}
+
 const isDate = (s?: string) => !!s && DATE_PATTERN.test(s) && !Number.isNaN(new Date(s).getTime())
 const blank = (s?: string) => !s || !s.trim()
 const clean = (list: string[] = []) => list.map((s) => s.trim()).filter(Boolean)
@@ -37,6 +42,7 @@ export function normalizeSchool(school: School): School {
     highlights: clean(school.highlights),
     sources: clean(school.sources),
     isSample: school.isSample || undefined,
+    qnaOpen: school.qnaOpen || undefined,
     subjects: school.subjects.map((s) => ({
       ...s,
       name: s.name.trim(),
@@ -150,8 +156,8 @@ export function validateSchool(raw: School, otherSchools: School[] = []): Issue[
 
   // 설계 원칙 점검 (경고)
   const text = JSON.stringify(school)
-  for (const { pattern, label } of PERSONAL_INFO) {
-    if (pattern.test(text)) warn('개인정보', `${label}로 보이는 내용이 있어요. 개인 연락처는 넣지 말아 주세요. (원칙 4)`)
+  for (const label of findPersonalInfo(text)) {
+    warn('개인정보', `${label}로 보이는 내용이 있어요. 개인 연락처는 넣지 말아 주세요. (원칙 4)`)
   }
   for (const { words, label } of BANNED_WORDS) {
     const found = words.filter((w) => text.includes(w))

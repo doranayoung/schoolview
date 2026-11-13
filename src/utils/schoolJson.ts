@@ -20,6 +20,7 @@ export function emptySchool(): School {
     subjects: [],
     clubs: [],
     qna: [],
+    qnaOpen: false,
     updatedAt: todayString(),
     sources: ['학교 제공'],
   }

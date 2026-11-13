@@ -25,3 +25,6 @@ dist-ssr
 
 # Claude Code
 CLAUDE.md
+
+# 환경 변수 (Supabase 키 등)
+.env

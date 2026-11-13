@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ClubCard, SubjectCard } from '../components/Cards'
+import QnaSection from '../components/QnaSection'
 import { getSchool } from '../data'
 import type { School, SubjectCategory } from '../types'
 
@@ -35,8 +36,8 @@ export default function SchoolDetail() {
   )
 }
 
-// 학교 상세 화면 본문. 입력 도우미의 미리보기에서도 그대로 쓴다.
-export function SchoolView({ school }: { school: School }) {
+// 학교 상세 화면 본문. 입력 도우미의 미리보기(preview)에서도 그대로 쓴다.
+export function SchoolView({ school, preview }: { school: School; preview?: boolean }) {
   const [tab, setTab] = useState<Tab>('intro')
   const [category, setCategory] = useState<SubjectCategory | '전체'>('전체')
 
@@ -103,20 +104,7 @@ export function SchoolView({ school }: { school: School }) {
         </div>
       )}
 
-      {tab === 'qna' && (
-        <div className="stack">
-          {school.qna.map((q) => (
-            <article key={q.question} className="card">
-              <h3>Q. {q.question}</h3>
-              <p>A. {q.answer}</p>
-              <p className="muted small">
-                {q.answeredBy} 답변 · {q.reviewedBy} 확인
-              </p>
-            </article>
-          ))}
-          {school.qna.length === 0 && <p className="muted">아직 등록된 답변이 없어요.</p>}
-        </div>
-      )}
+      {tab === 'qna' && <QnaSection school={school} preview={preview} />}
     </>
   )
 }
