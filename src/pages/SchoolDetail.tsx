@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ClubCard, SubjectCard } from '../components/Cards'
 import { getSchool } from '../data'
-import type { SubjectCategory } from '../types'
+import type { School, SubjectCategory } from '../types'
 
 type Tab = 'intro' | 'subjects' | 'clubs' | 'qna'
 const tabs: { id: Tab; label: string }[] = [
@@ -16,8 +16,6 @@ const categories: (SubjectCategory | '전체')[] = ['전체', '공통', '일반�
 export default function SchoolDetail() {
   const { id = '' } = useParams()
   const school = getSchool(id)
-  const [tab, setTab] = useState<Tab>('intro')
-  const [category, setCategory] = useState<SubjectCategory | '전체'>('전체')
 
   if (!school) {
     return (
@@ -27,15 +25,27 @@ export default function SchoolDetail() {
     )
   }
 
+  return (
+    <>
+      <Link to="/" className="back">
+        ← 학교 목록
+      </Link>
+      <SchoolView key={school.id} school={school} />
+    </>
+  )
+}
+
+// 학교 상세 화면 본문. 입력 도우미의 미리보기에서도 그대로 쓴다.
+export function SchoolView({ school }: { school: School }) {
+  const [tab, setTab] = useState<Tab>('intro')
+  const [category, setCategory] = useState<SubjectCategory | '전체'>('전체')
+
   const subjects = school.subjects
     .filter((s) => category === '전체' || s.category === category)
     .sort((a, b) => a.grade - b.grade)
 
   return (
     <>
-      <Link to="/" className="back">
-        ← 학교 목록
-      </Link>
       <section className="school-head">
         <h1>
           {school.name} {school.isSample && <span className="badge badge-sample">예시</span>}

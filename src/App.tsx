@@ -4,6 +4,7 @@ import Clubs from './pages/Clubs'
 import Explore from './pages/Explore'
 import Home from './pages/Home'
 import SchoolDetail from './pages/SchoolDetail'
+import SchoolEditor from './pages/SchoolEditor'
 
 // HashRouter: GitHub Pages 같은 정적 호스팅에서도 새로고침 시 404가 나지 않는다.
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/school/:id" element={<SchoolDetail />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/clubs" element={<Clubs />} />
+          <Route path="/editor" element={<SchoolEditor />} />
         </Route>
       </Routes>
     </HashRouter>

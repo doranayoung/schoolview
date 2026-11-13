@@ -19,3 +19,14 @@ export const interests: Interest[] = [
   { id: 'soc', label: '사회·인문', tags: ['사회', '인문', '정책', '글쓰기'] },
   { id: 'art', label: '예술·미디어', tags: ['예술', '음악', '미디어'] },
 ]
+
+// 개발 중에는 학교 JSON 파일에 빠진 내용이 없는지 콘솔에 알려준다.
+if (import.meta.env.DEV) {
+  void import('../utils/validateSchool').then(({ validateSchool }) => {
+    for (const school of schools) {
+      for (const issue of validateSchool(school, schools)) {
+        if (issue.level === 'error') console.warn(`[스쿨뷰 데이터] ${school.id} · ${issue.where}: ${issue.message}`)
+      }
+    }
+  })
+}

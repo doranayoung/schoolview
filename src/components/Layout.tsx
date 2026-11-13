@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 
 export default function Layout() {
   return (
@@ -21,6 +21,9 @@ export default function Layout() {
       <footer className="footer">
         <p>스쿨뷰는 학교 순위·별점을 제공하지 않으며, 시험·수행평가 자료를 다루지 않아요.</p>
         <p>재학생 답변은 학생회·담당 교사의 확인을 거쳐 공개돼요.</p>
+        <p>
+          <Link to="/editor">교사·학생회: 학교 정보 입력 도우미</Link>
+        </p>
       </footer>
     </div>
   )

@@ -97,6 +97,7 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--blue-soft);
 .btn:disabled { opacity: 0.45; cursor: default; background: #fff; }
 .btn-primary { background: var(--blue); color: #fff; font-weight: 600; }
 .btn-primary:hover { background: #173d7a; }
+.btn-primary:disabled { background: var(--blue); color: #fff; }
 .btn-ghost { border-color: var(--line); color: var(--muted); }
 .btn-danger { border-color: #e2b4b4; color: #b3261e; }
 .btn-danger:hover { background: #fdecea; }
@@ -115,3 +116,37 @@ select { font: inherit; padding: 0.35rem 0.6rem; border-radius: 8px; border: 1px
   .main { padding: 1rem; }
   .hero h1 { font-size: 1.3rem; }
 }
+
+/* 입력 도우미 */
+.form { gap: 0.8rem; }
+.form-row { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+.item-body { display: grid; gap: 0.8rem; padding-top: 0.6rem; }
+.check-group { border: none; padding: 0; margin: 0; min-width: 0; }
+.check-group legend { padding: 0; font-weight: 600; font-size: 0.9rem; }
+.check-group .chips { margin: 0.35rem 0 0; }
+.check-group .chip input { position: absolute; opacity: 0; pointer-events: none; }
+.check-group .chip:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
+.checkbox { display: flex; align-items: flex-start; gap: 0.45rem; font-size: 0.9rem; cursor: pointer; padding: 0.15rem 0; }
+.checkbox input { margin-top: 0.3rem; }
+.sub-title { font-size: 0.95rem; margin: 0.6rem 0 0; padding-top: 0.6rem; border-top: 1px dashed var(--line); }
+
+.item { padding: 0.6rem 0.8rem; }
+.item-open { border-color: var(--blue); }
+.item-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.item-toggle { font: inherit; flex: 1; text-align: left; background: none; border: none; padding: 0.2rem 0; cursor: pointer; color: var(--text); font-weight: 600; }
+.item-tools { display: flex; gap: 0.25rem; }
+.icon-btn { font: inherit; width: 2rem; height: 2rem; border-radius: 8px; border: 1px solid var(--line); background: #fff; color: var(--muted); cursor: pointer; }
+.icon-btn:disabled { opacity: 0.35; cursor: default; }
+.icon-danger { color: #b3261e; }
+.add-btn { justify-self: start; }
+
+.editor-start { margin: 0.75rem 0; }
+.file-btn { position: relative; overflow: hidden; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.issues { margin: 0.25rem 0 0.5rem; padding-left: 1.1rem; font-size: 0.9rem; }
+.issues strong { margin-right: 0.35rem; }
+.error-text { color: #b3261e; font-weight: 600; }
+.warn-text { color: var(--orange); font-weight: 600; }
+.ok-text { color: var(--green); font-weight: 600; }
+.json-preview { max-height: 360px; overflow: auto; font-size: 0.78rem; background: var(--bg); border-radius: 8px; padding: 0.75rem; white-space: pre-wrap; word-break: break-all; }
+.preview { border: 2px dashed var(--line); border-radius: 16px; padding: 1rem; display: grid; gap: 0.75rem; }
