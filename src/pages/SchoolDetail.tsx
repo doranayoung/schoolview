@@ -88,7 +88,7 @@ export default function SchoolDetail() {
       {tab === 'clubs' && (
         <div className="grid">
           {school.clubs.map((c) => (
-            <ClubCard key={c.id} club={c} />
+            <ClubCard key={c.id} club={c} isSample={school.isSample} />
           ))}
         </div>
       )}

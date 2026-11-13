@@ -43,7 +43,7 @@ export default function Explore() {
               <SubjectCard key={s.name} subject={s} highlight={selected.tags} />
             ))}
             {clubs.map((c) => (
-              <ClubCard key={c.id} club={c} highlight={selected.tags} />
+              <ClubCard key={c.id} club={c} isSample={school.isSample} highlight={selected.tags} />
             ))}
           </div>
         </section>

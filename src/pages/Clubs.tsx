@@ -44,7 +44,7 @@ export default function Clubs() {
       </div>
       <div className="grid">
         {items.map(({ club, school }) => (
-          <ClubCard key={club.id} club={club} schoolName={school.name} />
+          <ClubCard key={club.id} club={club} schoolName={school.name} isSample={school.isSample} />
         ))}
       </div>
       {items.length === 0 && <p className="muted">조건에 맞는 동아리가 없어요.</p>}

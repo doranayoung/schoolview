@@ -68,7 +68,21 @@ p { margin: 0.35rem 0; }
 .meta dd { margin: 0; }
 .senior { font-size: 0.9rem; background: var(--bg); border-radius: 8px; padding: 0.5rem 0.65rem; }
 .recruit { font-size: 0.9rem; border-top: 1px dashed var(--line); padding-top: 0.4rem; }
-.survey { font-size: 0.9rem; margin: 0.4rem 0 0; padding-left: 1.2rem; }
+.survey-form { display: grid; gap: 0.6rem; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px dashed var(--line); }
+.notice { background: #fff8e6; color: #6b4b00; border-radius: 8px; padding: 0.45rem 0.65rem; margin: 0; }
+
+.field { display: grid; gap: 0.25rem; font-size: 0.9rem; }
+.field > span:first-child { font-weight: 600; }
+.field .hint { font-weight: 400; color: var(--muted); font-size: 0.8rem; }
+.counter { justify-self: end; font-size: 0.75rem; color: var(--muted); }
+input[type='text'], input[type='url'], input[type='date'], input[type='number'], input[type='email'], textarea {
+  font: inherit; font-size: 0.95rem; width: 100%; padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--text);
+}
+textarea { resize: vertical; min-height: 4.5rem; }
+input:focus, textarea:focus, select:focus { outline: 2px solid var(--blue-soft); border-color: var(--blue); }
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.3rem; }
 .tag { font-size: 0.75rem; color: var(--muted); background: var(--bg); padding: 0.05rem 0.45rem; border-radius: 6px; }
@@ -80,6 +94,12 @@ p { margin: 0.35rem 0; }
 
 .btn { font: inherit; font-size: 0.85rem; cursor: pointer; padding: 0.35rem 0.8rem; border-radius: 8px; border: 1px solid var(--blue); background: #fff; color: var(--blue); }
 .btn:hover { background: var(--blue-soft); }
+.btn:disabled { opacity: 0.45; cursor: default; background: #fff; }
+.btn-primary { background: var(--blue); color: #fff; font-weight: 600; }
+.btn-primary:hover { background: #173d7a; }
+.btn-ghost { border-color: var(--line); color: var(--muted); }
+.btn-danger { border-color: #e2b4b4; color: #b3261e; }
+.btn-danger:hover { background: #fdecea; }
 
 .tabs { display: flex; gap: 0.25rem; border-bottom: 1px solid var(--line); margin: 1rem 0; overflow-x: auto; }
 .tab { font: inherit; cursor: pointer; padding: 0.55rem 0.9rem; border: none; background: none; color: var(--muted); border-bottom: 3px solid transparent; white-space: nowrap; }

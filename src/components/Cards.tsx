@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import type { Club, Subject } from '../types'
 import { daysLeft, formatDate, recruitStatus, statusLabel } from '../utils/recruit'
+import ClubSurvey from './ClubSurvey'
 
 export function Tags({ tags, highlight = [] }: { tags: string[]; highlight?: string[] }) {
   return (
@@ -59,8 +59,14 @@ export function RecruitBadge({ club }: { club: Club }) {
   return <span className={`status status-${status}`}>{statusLabel[status] + extra}</span>
 }
 
-export function ClubCard({ club, schoolName, highlight }: { club: Club; schoolName?: string; highlight?: string[] }) {
-  const [showSurvey, setShowSurvey] = useState(false)
+interface ClubCardProps {
+  club: Club
+  schoolName?: string
+  isSample?: boolean // 예시 학교면 실제 신청서로 보내지 않는다
+  highlight?: string[]
+}
+
+export function ClubCard({ club, schoolName, isSample, highlight }: ClubCardProps) {
   const status = recruitStatus(club.recruit)
 
   return (
@@ -92,19 +98,8 @@ export function ClubCard({ club, schoolName, highlight }: { club: Club; schoolNa
           {club.recruit.notice && <p className="muted">{club.recruit.notice}</p>}
         </div>
       )}
-      {club.survey && status !== 'closed' && (
-        <div>
-          <button className="btn" onClick={() => setShowSurvey((v) => !v)}>
-            {showSurvey ? '사전 설문 닫기' : '지원 전 사전 설문 보기'}
-          </button>
-          {showSurvey && (
-            <ol className="survey">
-              {club.survey.map((q) => (
-                <li key={q}>{q}</li>
-              ))}
-            </ol>
-          )}
-        </div>
+      {club.survey && club.survey.length > 0 && status !== 'closed' && (
+        <ClubSurvey club={{ ...club, survey: club.survey }} status={status} isSample={isSample} />
       )}
       <Tags tags={club.tags} highlight={highlight} />
     </article>

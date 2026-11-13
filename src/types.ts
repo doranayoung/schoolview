@@ -22,6 +22,15 @@ export interface Recruit {
   notice?: string
 }
 
+// 동아리 신청서. 스쿨뷰는 지원자 정보를 저장하지 않고,
+// 동아리·학교가 직접 운영하는 신청서(구글 설문 등)로 답변을 넘겨준다.
+export interface ApplyForm {
+  url: string // 신청서 주소 (https만 허용)
+  // 구글 설문 '미리 채워진 링크'의 entry 번호. survey 문항과 같은 순서로 적는다.
+  // 있으면 스쿨뷰에서 쓴 답변이 신청서에 자동으로 채워진다. 예: ["entry.1234567", "entry.7654321"]
+  entries?: string[]
+}
+
 export interface Club {
   id: string
   name: string
@@ -31,7 +40,7 @@ export interface Club {
   tags: string[]
   recruit?: Recruit
   survey?: string[] // 지원 전 사전 설문 문항
-  applyUrl?: string
+  applyForm?: ApplyForm
 }
 
 export interface QnA {
